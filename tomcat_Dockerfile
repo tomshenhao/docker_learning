@@ -1,12 +1,17 @@
-FROM tom/centos:7.4.1708
+FROM tom/jdk:8u141
 
-#Install oracle java 1.8 build 141
-COPY jdk-8u141-linux-x64.tar.gz /tmp
-COPY AEM_6.2_Quickstart.jar /tmp
+ENV CATALINA_HOME /appl/online/products/apache/tomcat8
+ENV PATH $CATALINA_HOME/bin:$PATH
 
-RUN cd /tmp && \
-    tar -xvf jdk-8u141-linux-x64.tar.gz -C /usr/local && \
-    rm -rf /tmp/jdk-8u141-linux-x64.tar.gz && \
-    alternatives --install /usr/bin/java java /usr/local/jdk1.8.0_141/bin/java 2
+COPY apache-tomcat-8.5.24.tar.gz /tmp
 
-ENTRYPOINT ["/usr/sbin/init"]
+RUN mkdir -p /appl/online/products/apache && \
+    cd /tmp && \
+    tar xvf apache-tomcat-8.5.24.tar.gz -C /appl/online/products/apache && \
+    rm -rf apache-tomcat-8.5.24.tar.gz && \
+    cd /appl/online/products/apache && \
+    mv apache-tomcat-8.5.24 tomcat8
+
+EXPOSE 8080
+
+ENTRYPOINT ["catalina.sh","run"]
