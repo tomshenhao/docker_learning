@@ -1,11 +1,11 @@
 # docker_learning
 Create centos / apache / jdk / tomcat image
 
-Construction path
+Construction path:
 
-centos --> apache
+1. centos --> apache
 
-centos --> jdk --> tomcat
+2. centos --> jdk --> tomcat
 
 jdk: need to download jdk-8u141-linux-x64.tar.gz
 
