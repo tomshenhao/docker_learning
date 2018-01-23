@@ -1,0 +1,11 @@
+FROM tom/centos:7.4.1708
+
+RUN yum install -y httpd && \
+    yum clean all 
+
+COPY httpd-foreground /usr/local/bin
+RUN chmod +x /usr/local/bin/httpd-foreground
+
+EXPOSE 80
+
+ENTRYPOINT ["httpd-foreground"]
