@@ -2,7 +2,6 @@ FROM tom/centos:7.4.1708
 
 #Install oracle java 1.8 build 141
 COPY jdk-8u141-linux-x64.tar.gz /tmp
-COPY AEM_6.2_Quickstart.jar /tmp
 
 RUN cd /tmp && \
     tar -xvf jdk-8u141-linux-x64.tar.gz -C /usr/local && \
