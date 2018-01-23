@@ -1,2 +1,3 @@
 # docker_learning
-learning docker 
+centos --> apache
+centos --> jdk --> tomcat
